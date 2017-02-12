@@ -3,4 +3,4 @@
 	url = https://github.com/sifive/openocd.git
 [submodule "riscv-gnu-toolchain"]
 	path = riscv-gnu-toolchain
-	url = https://github.com/riscv/riscv-gnu-toolchain.git
+	url = https://github.com/Fabien-Chouteau/riscv-gnu-toolchain
