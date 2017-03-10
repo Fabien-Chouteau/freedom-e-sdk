@@ -50,6 +50,7 @@ help :
 toolchain_srcdir := $(srcdir)/riscv-gnu-toolchain
 toolchain32_wrkdir := $(wrkdir)/riscv32-gnu-toolchain
 toolchain_dest := $(CURDIR)/toolchain
+gnat-tar := gnat-gpl-2016-arm-elf-linux-bin.tar.gz
 PATH := $(toolchain_dest)/bin:$(PATH)
 
 openocd_srcdir := $(srcdir)/openocd
@@ -66,13 +67,19 @@ all: tools
 tools: tools32 openocd
 	@echo All Tools Installed
 
-tools32: $(toolchain_dest)/bin/$(target32)-gcc
+tools32: $(toolchain_dest)/bin/$(target32)-gcc $(toolchain_dest)/bin/gprbuild
 openocd: $(openocd_dest)/bin/openocd
 
 $(toolchain_dest)/bin/$(target32)-gcc: $(toolchain_srcdir)
 	mkdir -p $(toolchain32_wrkdir)
 	cd $(toolchain32_wrkdir); $(toolchain_srcdir)/configure --prefix=$(toolchain_dest) --with-arch=rv32imac --with-abi=ilp32
 	$(MAKE) -C $(toolchain32_wrkdir)
+
+$(toolchain_dest)/bin/gprbuild: $(toolchain_srcdir) $(gnat-tar)
+	tar xf $(gnat-tar) --strip 1 -C $(toolchain_dest)
+
+$(gnat-tar):
+	wget http://mirrors.cdn.adacore.com/art/573f240ac7a447edfe0316a5 -O gnat-gpl-2016-arm-elf-linux-bin.tar.gz
 
 $(openocd_dest)/bin/openocd: $(openocd_srcdir)
 	mkdir -p $(openocd_wrkdir)
