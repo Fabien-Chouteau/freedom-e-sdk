@@ -4,3 +4,6 @@
 [submodule "riscv-gnu-toolchain"]
 	path = riscv-gnu-toolchain
 	url = https://github.com/Fabien-Chouteau/riscv-gnu-toolchain
+[submodule "Ada_Drivers_Library"]
+	path = Ada_Drivers_Library
+	url = https://github.com/AdaCore/Ada_Drivers_Library.git
