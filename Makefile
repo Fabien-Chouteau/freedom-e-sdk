@@ -90,6 +90,13 @@ $(openocd_dest)/bin/openocd: $(openocd_srcdir)
 	$(MAKE) -C $(openocd_wrkdir)
 	$(MAKE) -C $(openocd_wrkdir) install
 
+ada_blinky_build:
+	Ada_Drivers_Library/scripts/install_optional_deps.py
+	gprbuild -f -p -P Ada_Drivers_Library/examples/HiFive1/hifive1_example.gpr -XPLATFORM_BUILD=Debug
+
+ada_blinky_upload:
+	$(OPENOCD_UPLOAD) Ada_Drivers_Library/examples/HiFive1/obj/main $(OPENOCDCFG)
+
 .PHONY: uninstall
 uninstall:
 	rm -rf $(wrkdir)
