@@ -1,3 +1,8 @@
+# Obsolete
+
+The HiFive1 is now supported in GNAT Community [here](adacore.com/download).
+This repository is therefore obsolete.
+
 # README #
 
 This repository, a clone of the SDK maintained by SiFive, Inc, makes it easy to
