@@ -1,6 +1,6 @@
 # Obsolete
 
-The HiFive1 is now supported in GNAT Community [here](adacore.com/download).
+The HiFive1 is now supported in GNAT Community [here](http://adacore.com/download).
 This repository is therefore obsolete.
 
 # README #
